@@ -4,6 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const adminRo = require('./routes/admin');
+const cartRo = require('./routes/cart.js');
+const buyRo = require('./routes/orders');
 const pool =  require('./utils/database');
 
 
@@ -15,6 +17,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 
 app.use('/admin',adminRo);
-
+app.use('/cart',cartRo);
+app.use('/orders',buyRo);
 
 app.listen(3000);
