@@ -2,15 +2,11 @@ const Prod = require('../models/prod');
 
 
 exports.get_test = (req,res,next) => {
-
-
     res.render('admin/add_product', {
         pageTitle: 'Add Product',
         path: '/admin/add-product',
         editing: false
     });
-
-
 };
 
 exports.post_test = (req,res,next) => {
