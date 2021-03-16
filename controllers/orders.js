@@ -4,6 +4,8 @@ const Orders = require('../models/orders');
 exports.order = async (req,res,next) => {
 
     const orderitem = new Orders();
+    const checks = await orderitem.order_cond();
+    if(checks.rows.length > 0){
     const credits = await orderitem.get_credits().catch(err => console.log(err));
     const cartvalue = await orderitem.get_cartvalue().catch(err => console.log(err));
     if(credits.rows[0].credit >= cartvalue.rows[0].cartvalue){
@@ -13,6 +15,10 @@ exports.order = async (req,res,next) => {
     else{
         res.redirect('/cart');
     }
+}
+else{
+    res.redirect('/cart');
+}
 
     
 };
