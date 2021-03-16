@@ -13,8 +13,6 @@ exports.order = async (req,res,next) => {
     else{
         res.redirect('/cart');
     }
-
-    
 };
 
 exports.get_orders = async (req,res,next) => {

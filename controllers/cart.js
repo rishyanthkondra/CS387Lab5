@@ -24,7 +24,7 @@ exports.post_cart = async (req,res,next) => {
     const available = await proditem.check(prodId).catch(err => console.log(err));
     const present = await cartitem.check(prodId).catch(err => console.log(err));
     if(!available){
-        res.redirect('/prod');
+        res.redirect('/prods');
     }else if(present){
         await cartitem.update_cart(prodId,1).catch(err => console.log(err));
         await proditem.update_count(prodId).catch(err => console.log(err));
